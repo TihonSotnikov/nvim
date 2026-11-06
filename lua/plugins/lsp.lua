@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      vim.lsp.log.set_level(vim.log.levels.OFF)
       return vim.tbl_deep_extend("force", opts, {
         inlay_hints = { enabled = false },
         diagnostics = {
@@ -13,7 +12,7 @@ return {
           clangd = {
             mason = false,
             cmd = {
-              "/opt/homebrew/opt/llvm/bin/clangd",
+              require("config.llvm").bin("clangd"),
               "--background-index",
               "--clang-tidy",
               "--header-insertion=iwyu",

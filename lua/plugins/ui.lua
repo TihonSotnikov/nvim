@@ -36,9 +36,11 @@ return {
       opts.sections.lualine_x = {
         {
           function()
+            ---@diagnostic disable-next-line: undefined-field
             return require("noice").api.status.command.get()
           end,
           cond = function()
+            ---@diagnostic disable-next-line: undefined-field
             return package.loaded["noice"] and require("noice").api.status.command.has()
           end,
           color = function()
